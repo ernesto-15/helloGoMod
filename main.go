@@ -11,23 +11,29 @@ func main() {
 	// fmt.Println(quote.HelloV3())
 	// fmt.Println(quote.Concurrency())
 
-	goCourse := course.Course{
-		IsFree:  false,
-		Name:    "Go from zero to hero",
-		Price:   12.34,
-		UserIDs: []uint{12, 56, 32},
-		Classes: map[uint]string{
-			1: "Intro",
-			2: "Struct",
-			3: "Maps",
-		},
-	}
+	goCourse := course.New("Go from zero to hero", 45.3, false)
 
-	nose := new(course.Course)
+  classes := map[uint]string{
+    1: "Intro",
+    2: "Struct",
+    3: "Maps",
+  }
+  goCourse.SetClasses(classes)
+  userIDs := []uint {1,2,3,4,5}
+  goCourse.SetUserIDs(userIDs)
+  goCourse.SetIsFree(true)
+  goCourse.SetName("Go for dummies")
+  goCourse.SetPrice(69.99)
 
-	goCourse.PrintClasses()
-	goCourse.ChangePrice(104.5)
-	fmt.Println(goCourse.Price)
-	fmt.Printf("%T --- %+v", nose, nose)
+  fmt.Println("Name: ", goCourse.Name())
+  fmt.Println("Price: ", goCourse.Price())
+  fmt.Println("Classes: ", goCourse.Classes())
+  fmt.Println("UserIDs: ", goCourse.UserIDs())
+  fmt.Println("IsFree: ", goCourse.IsFree())
+  
+  fmt.Printf("%T\n%+v", goCourse, goCourse)
 
+  
+  // nose := new(course.Course)
+  // fmt.Printf("%T --- %+v", nose, nose)
 }
